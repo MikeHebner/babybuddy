@@ -192,3 +192,17 @@ class TagAdmin(admin.ModelAdmin):
     ordering = ["name", "slug"]
     search_fields = ["name"]
     prepopulated_fields = {"slug": ["name"]}
+
+
+class HeadCircumferenceExportResource(ImportExportResourceBase):
+    class Meta:
+        model = models.HeadCircumference
+
+
+@admin.register(models.HeadCircumference)
+class HeadCircumferenceAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
+    list_display = ()
+    list_filter = ()
+    search_fields = ()
+
+    resource_class = HeadCircumferenceExportResource
