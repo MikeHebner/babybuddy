@@ -201,8 +201,15 @@ class HeadCircumferenceExportResource(ImportExportResourceBase):
 
 @admin.register(models.HeadCircumference)
 class HeadCircumferenceAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
-    list_display = ()
-    list_filter = ()
-    search_fields = ()
-
+    list_display = (
+        "child",
+        "head_circumference",
+        "date",
+    )
+    list_filter = ("child",)
+    search_fields = (
+        "child__first_name",
+        "child__last_name",
+        "head_circumference",
+    )
     resource_class = HeadCircumferenceExportResource
