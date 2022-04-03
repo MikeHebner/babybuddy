@@ -213,3 +213,23 @@ class HeadCircumferenceAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAd
         "head_circumference",
     )
     resource_class = HeadCircumferenceExportResource
+
+
+class HeightExportResource(ImportExportResourceBase):
+    class Meta:
+        model = models.Height
+
+
+@admin.register(models.Height)
+class HeightAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
+    list_display = (
+        "child",
+        "height",
+        "date",
+    )
+    list_filter = ("child",)
+    search_fields = ("child__first_name",
+                     "child__last_name",
+                     "height",
+                     )
+    resource_class = HeightExportResource
