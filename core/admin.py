@@ -233,3 +233,24 @@ class HeightAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
                      "height",
                      )
     resource_class = HeightExportResource
+
+
+class BMIExportResource(ImportExportResourceBase):
+    class Meta:
+        model = models.BMI
+
+
+@admin.register(models.BMI)
+class BMIAdmin(ImportExportMixin, ExportActionMixin, admin.ModelAdmin):
+    list_display = (
+        "child",
+        "bmi",
+        "date"
+    )
+    list_filter = ("child",)
+    search_fields = (
+        "child__first_name",
+        "child__last_name",
+        "bmi"
+    )
+    resource_class = BMIExportResource
