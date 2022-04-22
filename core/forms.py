@@ -81,6 +81,7 @@ class CoreModelForm(forms.ModelForm):
         if self.timer_id:
             timer = models.Timer.objects.get(id=self.timer_id)
             timer.stop(instance.end)
+            timer.delete()
         if commit:
             instance.save()
             self.save_m2m()
