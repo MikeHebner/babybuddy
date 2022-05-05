@@ -6,9 +6,7 @@ from typing import Iterable, Optional
 
 from django.conf import settings
 from django.core.cache import cache
-from django.core.exceptions import ValidationError
-from django.db import models
-from django.utils.text import slugify
+from django.core.exceptions import ValidationError0
 from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
@@ -191,6 +189,7 @@ class Child(models.Model):
         blank=True, null=True, upload_to="child/picture/", verbose_name=_("Picture")
     )
 
+    # owner = models.IntegerField(blank=False, verbose_name=_("Child's owner"), default=1)
     objects = models.Manager()
 
     cache_key_count = "core.child.count"
